@@ -15,8 +15,8 @@ spec:
         app: my-app
     spec:
       containers:
-      - name: simple-express
-        image: YOUR-DOCKER-ID/sample
+      - name: my-app
+        image: cleowoman/simple-reverseproxy:v1
         ports:
         - containerPort: 8080
         livenessProbe:
