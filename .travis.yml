@@ -16,9 +16,10 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t simple-reverseproxy .
-  - docker tag simple-reverseproxy cleowoman/simple-reverseproxy:latest
+  - docker tag simple-reverseproxy cleowoman/simple-reverseproxy:v1
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push cleowoman/simple-reverseproxy:v1
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push cleowoman/simple-reverseproxy
+  - echo "Done"
 
